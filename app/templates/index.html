@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Encurtador de URL</title>
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #f9f9f9;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .logo {
+            width: 140px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #2b539e;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 70%;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-right: 10px;
+            background-color: #fff;
+            color: #333;
+        }
+
+        button {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 6px;
+            background-color: #2b539e;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #203d75;
+        }
+
+        .short-url {
+            margin-top: 20px;
+            color: #4469B0;
+            word-wrap: break-word;
+        }
+
+        .short-url a {
+            color: #4469B0;
+            text-decoration: none;
+        }
+
+        .short-url a:hover {
+            text-decoration: underline;
+        }
+
+        .copy-button {
+            margin-top: 10px;
+            background-color: #2b539e;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .copy-button:hover {
+            background-color: #203d75;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="/static/img/giro_logo.png" alt="Logo Giro" class="logo">
+        <h1>Encurtador de URL</h1>
+        <form action="/shorten" method="post">
+            <input type="text" name="url" placeholder="Cole a URL aqui" required>
+            <button type="submit">Encurtar</button>
+        </form>
+
+        {% if short_url %}
+        <div class="short-url">
+            <p><strong>URL encurtada:</strong></p>
+            <a id="shortUrl" href="{{ short_url }}" target="_blank">{{ short_url }}</a><br>
+            <button class="copy-button" onclick="copyToClipboard()">Copiar</button>
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        function copyToClipboard() {
+            const url = document.getElementById("shortUrl").href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert("URL copiada com sucesso!");
+            }).catch(err => {
+                alert("Erro ao copiar: " + err);
+            });
+        }
+    </script>
+</body>
+</html>
+
