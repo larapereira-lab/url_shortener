@@ -1,0 +1,12 @@
+version: '3.9'
+
+services:
+  app:
+    build: .
+    container_name: url_shortener_app
+    ports:
+      - "8000:8000"
+    environment:
+      - BASE_URL=http://localhost:8000/
+      - SUPABASE_URL=https://iayzxrbecfwdyxkmzhgs.supabase.co
+      - SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlheXp4cmJlY2Z3ZHl4a216aGdzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQxMzMxMzAsImV4cCI6MjA1OTcwOTEzMH0.44JP0VPbVgvY3UmWRtwp08OF1qs1UKWLtPYg3PkPU-8

@@ -1,0 +1,15 @@
+# Ignorar variáveis de ambiente
+.env
+
+# Ignorar arquivos e pastas do Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+
+# Ignorar pastas do sistema
+.DS_Store
+.vscode/
+.idea/
+
+# Ignorar arquivos do sistema operacional
+Thumbs.db
