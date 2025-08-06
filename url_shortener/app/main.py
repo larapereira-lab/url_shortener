@@ -18,6 +18,8 @@ def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 
+
+
 @app.post("/shorten", response_class=HTMLResponse)
 def shorten(request: Request, url: str = Form(...)):
     hash = gerar_hash()
